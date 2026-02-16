@@ -4,14 +4,14 @@
 # See the LICENSE file for details.
 
 cmake_minimum_required(VERSION 3.12)
-project(NeoJumper LANGUAGES CXX)
+project(OpenGD LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2")
 
 # Targets
-file(GLOB SOURCES "src/*.cpp" "src/**/*.cpp" "src/**/**/*.cpp")
+file(GLOB SOURCES "src/*.cpp" "src/**/*.cpp")
 
 add_library(glad STATIC lib/glad/src/glad.cpp)
 target_include_directories(glad PUBLIC lib/glad/include)
@@ -25,7 +25,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     src/includes
 )
 # Glad
-target_link_libraries(NeoJumper PRIVATE glad)
+target_link_libraries(OpenGD PRIVATE glad)
 
 # GLFW
 find_package(PkgConfig REQUIRED)
@@ -37,7 +37,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE OpenAL::OpenAL)
 
 # OpenGL
 find_package(OpenGL REQUIRED)
-target_link_libraries(NeoJumper PRIVATE OpenGL::GL)
+target_link_libraries(OpenGD PRIVATE OpenGL::GL)
 
 # PNG
 find_package(PNG REQUIRED)

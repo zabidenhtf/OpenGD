@@ -446,32 +446,6 @@ void GraphicsSystem::SetLight(vec3 Position, vec3 LookAt, vec4 Color){
     // TODO: Add colorfull lighting
 }
 
-void GraphicsSystem::DrawSkybox(){
-    vec3 size = vec3(16,16,16);
-    vec3 half = size * 0.5f;
-
-    // Draw sky with sky textures
-    EnableTexture(Data->GetTextureByID(SKYBOX_DOWN));
-    DrawPlane(CameraPos + vec3(0,-half.y,0), vec2(size.x, size.z), vec4(1,1,1,1), 0, 90, 180, false); // bottom
-
-    EnableTexture(Data->GetTextureByID(SKYBOX_UP));
-    DrawPlane(CameraPos + vec3(0,half.y,0), vec2(size.x, size.z), vec4(1,1,1,1), 0, 90, 180, false); // top
-
-    EnableTexture(Data->GetTextureByID(SKYBOX_FRONT));
-    DrawPlane(CameraPos + vec3(0,0,half.z), vec2(size.x, size.y), vec4(1,1,1,1), 0, 0, 180, false); // front
-
-    EnableTexture(Data->GetTextureByID(SKYBOX_BACK));
-    DrawPlane(CameraPos + vec3(0,0,-half.z), vec2(size.x, size.y), vec4(1,1,1,1), 0, 180, 0, false); // back
-
-    EnableTexture(Data->GetTextureByID(SKYBOX_LEFT));
-    DrawPlane(CameraPos + vec3(-half.x,0,0), vec2(size.z, size.y), vec4(1,1,1,1), 90, 0, 180, false); // left
-
-    EnableTexture(Data->GetTextureByID(SKYBOX_RIGHT));
-    DrawPlane(CameraPos + vec3(half.x,0,0), vec2(size.z, size.y), vec4(1,1,1,1), 90, 180, 0, false); // right
-
-    DisableTexture();
-}
-
 void GraphicsSystem::Kill(){
 	// For first destroying window, after terminating GLFW
 	glfwDestroyWindow(Root);
