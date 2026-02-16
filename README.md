@@ -1,24 +1,14 @@
 Warning, game now indev
-# Neojumper - 3D game about jumpstyle dancing
+# OpenGD - Opensource clone of Geometry Dash 1.0
 
 ## Description
-Neojumper - 3D game about jumpstyle dancing writed on C++ language. In game available 0 maps and 1 jumper (player).
-In game you can see
-- 3D graphics
-- Nice controls
-- Combo system
+OpenGD - Opensource clone of Geometry Dash 1.0, builded on base Neojumper commit 1f798ad engine.
 
 ## Authors
 Mykyta Polishyk - main developer of game
 
 ## Controls
-- Q - Kick forward with left leg
-- E - Kick forward with right leg
-- A - Stand on left feet
-- D - Stand on right feet
-- Z - Kick backward with left leg
-- C - Kick backward with right leg
-- Space - Flip
+INDEV
 
 ## Thanks for
 - GLFW - Nice GL lib for C++
@@ -28,12 +18,6 @@ Mykyta Polishyk - main developer of game
 - SimpleIni - For configs
 - Freetype - Fonts render
 - GIMP - my graphical editor
-- ASSIMP - for 3d models loading 
-- Blender - 3D editor
-
-## Ingame combo
-If you pressed more than 5 action buttons correctly, you will be get a combo. 
-When combo score for each action button will be 40
 
 ## Building
 To build NeoJumper you have to install:
@@ -46,8 +30,8 @@ To build NeoJumper you have to install:
 
 After installing this tools and libs you must to open terminal (Or in windows CMD), and write this:
 ```
-git clone https://github.com/zabidenhtf/neojumper.git
-cd neojumper
+git clone https://github.com/zabidenhtf/OpenGD.git
+cd OpenGD
 mkdir build
 cd build
 cmake ..
@@ -55,7 +39,7 @@ make
 ```
 
 ## Follow development
-More news about NeoJumper you can find in my development blog here: https://neojumper.blogspot.com/
+More news about OpenGD's NeoJumper engine and NeoJumper game you can find in my development blog here: https://neojumper.blogspot.com/
 
 -------------
 Milestone 0
