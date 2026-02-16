@@ -4,7 +4,7 @@
 # See the LICENSE file for details.
 
 cmake_minimum_required(VERSION 3.12)
-project(OpenGD LANGUAGES CXX)
+project(OSourceGD LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -25,7 +25,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     src/includes
 )
 # Glad
-target_link_libraries(OpenGD PRIVATE glad)
+target_link_libraries(OSourceGD PRIVATE glad)
 
 # GLFW
 find_package(PkgConfig REQUIRED)
@@ -37,7 +37,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE OpenAL::OpenAL)
 
 # OpenGL
 find_package(OpenGL REQUIRED)
-target_link_libraries(OpenGD PRIVATE OpenGL::GL)
+target_link_libraries(OSourceGD PRIVATE OpenGL::GL)
 
 # PNG
 find_package(PNG REQUIRED)

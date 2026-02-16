@@ -20,7 +20,7 @@ double last_time = Graphics->GetTime();
 // Cores global objects (Now nothing)
 
 int main(){
-    Console.Write("Launched OpenGD " + string(GAME_MILESTONE));
+    Console.Write("Launched OpenSourceGD " + string(GAME_MILESTONE));
     // Initializating systems
     Config = new ConfigureSystem();
     Data = new DataSystem();

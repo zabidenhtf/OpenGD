@@ -172,68 +172,6 @@ SoundData DataSystem::LoadSound(string Path){
     return SoundRetBuffer;
 }
 
-GraphicsModel DataSystem::LoadModel(const string path){
-    GraphicsModel Buffer;
-    
-    vector<vertex3D> vertices;
-    vector<GLuint> indices;
-
-    // Creating VAO
-    glGenVertexArrays(1, &Buffer.VAO);
-    glBindVertexArray(Buffer.VAO);
-    glGenBuffers(1, &Buffer.VBO);
-    glGenBuffers(1, &Buffer.EBO);
-
-    glBindVertexArray(Buffer.VAO);
-
-    // Reading model
-    const aiScene* scene = importer.ReadFile(path.c_str(), aiProcess_Triangulate);
-    aiMesh* mesh;
-    if (scene){
-        mesh = scene->mMeshes[0];
-    }
-    else{
-        Console.WriteDebug("GFX", "Failed to parsing model");
-        return Buffer;
-    }
-    // Put mesh's vertices into vertices vector
-    for(GLuint i = 0; i < mesh->mNumVertices; i++){
-        vertex3D vertex_buff;
-        vertex_buff.Position = vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z); // Writing position
-        if (mesh->HasNormals()){
-            vertex_buff.Normal = vec3(mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z); // Writing normals
-        }
-        if (mesh->mTextureCoords[0]){
-            vertex_buff.TexturePos = vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y); // Writing texture coords
-        }
-        vertices.push_back(vertex_buff);
-    }
-    // Put mesh's faces into indices vector
-    for (GLuint i = 0; i < mesh->mNumFaces; i++) {
-        aiFace face = mesh->mFaces[i];
-        for (GLuint j = 0; j < face.mNumIndices; j++)
-            indices.push_back(face.mIndices[j]);
-    }
-    glBindBuffer(GL_ARRAY_BUFFER, Buffer.VBO);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(vertex3D), &vertices[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffer.EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLuint), &indices[0], GL_STATIC_DRAW);
-
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertex3D), (void*)0);
-    // Normals
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(vertex3D), (void*)offsetof(vertex3D, Normal));
-    // TexCoords
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(vertex3D), (void*)offsetof(vertex3D, TexturePos));
-
-    // Closing
-    glBindVertexArray(0);
-    return Buffer;
-}
-
 // Constructor
 DataSystem::DataSystem(){
     // Cleaning vectors

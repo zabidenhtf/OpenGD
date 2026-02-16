@@ -14,9 +14,7 @@
 #include <glm/vec3.hpp>
 #include <glm/vec4.hpp>
 
-#include <assimp/Importer.hpp>
-#include <assimp/scene.h>
-#include <assimp/postprocess.h>
+#include <cstring>
 
 #include "includes.hpp"
 #include "utils/system.hpp"
@@ -29,13 +27,6 @@ struct vertex2D
 {
     vec2 Position;
     vec2 TexturePos;
-};
-
-struct vertex3D
-{
-    vec3 Position;
-    vec2 TexturePos;
-    vec3 Normal;
 };
 
 struct GraphicsTexture{ // 2D texture structure
@@ -78,8 +69,6 @@ private:
     vector<GraphicsTexture> Textures;
     vector<string> SoundPaths;
     vector<SoundData> Sounds;
-    // Assimp importer
-    Assimp::Importer importer;
 };
 
 extern DataSystem *Data; // Global data pointer
